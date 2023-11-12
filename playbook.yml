@@ -29,6 +29,16 @@
         requirements: requirements.txt
         state: present
 
+    - name: Include ansible vault
+      ansible.builtin.include_vars:
+        file: vault.yml
+
+    - name: Login in docker hub repo
+      community.docker.docker_login:
+        username: "{{ DOCKER_USERNAME }}"
+        password: "{{ DOCKER_PASSWORD }}"
+        reauth: true
+
     - name: Build docker image
       community.docker.docker_image:
         name: "{{ image_name }}"
