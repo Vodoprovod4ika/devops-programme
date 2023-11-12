@@ -1,11 +1,12 @@
 name: Github Actions on Main branch
+run-name: Random run name
 on: 
   pull_request:
     types: [opened, reopened, synchronize]
     branches:
       - 'main'
 jobs:
-  Github-Actions-Main:
+  Github-Actions-Main-pull-request:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "🎉 Automatic trigger for push in Main branch"
+      - run: echo "🎉 Automatic trigger for pull request in Main branch"
