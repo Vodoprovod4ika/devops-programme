@@ -1,0 +1,11 @@
+name: Github Actions on Main branch
+on: 
+  pull_request:
+    types: [opened, reopened]
+    branches:
+      - 'main'
+jobs:
+  Github-Actions-Main:
+    runs-on: ubuntu-latest
+    steps:
+      - run: "Echo Automatic trigger for push in Main branch"
