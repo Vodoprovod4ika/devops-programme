@@ -8,4 +8,4 @@ jobs:
   Github-Actions-Main:
     runs-on: ubuntu-latest
     steps:
-      - run: "Echo Automatic trigger for push in Main branch"
+      - run: "echo Automatic trigger for push in Main branch"
