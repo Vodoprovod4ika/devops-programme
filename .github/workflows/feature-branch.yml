@@ -40,5 +40,3 @@ jobs:
           python-version: '3.8'
       - name: Test
         uses: onichandame/python-test-action@master
-        with:
-          deps_list: 'requirements.txt'
