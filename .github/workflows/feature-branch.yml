@@ -44,3 +44,14 @@ jobs:
       - name: Tests
         run: |
           python -m unittest discover -s ./app -p "*_test.py"
+
+  gitleaks-check:
+    name: gitleaks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: gitleaks/gitleaks-action@v2
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
