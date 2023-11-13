@@ -1,5 +1,8 @@
 name: Action for features branches
-on: [push]
+on: 
+  push:
+    branches:
+      - "!main"
 jobs:
   Practice-build:
     runs-on: ubuntu-latest
