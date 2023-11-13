@@ -13,10 +13,7 @@ jobs:
       - run: editorconfig-checker
 
   Linter:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-lates
     steps:
-    - uses: actions/setup-python@v2
-    - run: pip install pylint && pip install pylint[spelling]
-    
-    - name: Codelint with pylint and black
-      run: pylint ./
+      - name: pylint-and-format
+        uses: itsvinayak/pylint-and-format@v1.1
