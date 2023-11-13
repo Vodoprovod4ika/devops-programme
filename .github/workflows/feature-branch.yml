@@ -8,12 +8,9 @@ jobs:
   Practice-build:
     runs-on: ubuntu-latest
     steps:
-    - name: check if file exists
-      id: check_files
-      uses: andstor/file-existence-action@v2
-      with:
-        files: ".editorconfig"
-        fail: true
+      - uses: actions/checkout@v2
+      - uses: editorconfig-checker/action-editorconfig-checker@main
+      - run: editorconfig-checker
 
   Linter:
     runs-on: ubuntu-latest
