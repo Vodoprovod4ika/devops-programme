@@ -1,0 +1,14 @@
+name: Action for features branches
+on: [push]
+jobs:
+  Practice-build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: check if file exists
+      id: check_files
+      uses: andstor/file-existence-action@v1
+      with:
+        files: ".editorconfig"
+    - name: File exists
+      if: steps.check_files.outputs.files_exists == 'true'
+      run: echo "It exists !"
