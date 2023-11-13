@@ -14,6 +14,8 @@ jobs:
       with:
         files: ".editorconfig"
         fail: true
-    - name: File exists
-      if: steps.check_files.outputs.files_exists == 'true'
-      run: echo "It exists !"
+    - name: Install pylint
+      run: pip install pylint && \
+        pip install pylint[spelling]
+    - name: Codelint with pylint and black
+      run: pylint ./
