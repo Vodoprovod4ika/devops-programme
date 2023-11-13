@@ -14,8 +14,12 @@ jobs:
       with:
         files: ".editorconfig"
         fail: true
-    - name: Install pylint
-      run: pip install pylint && \
-        pip install pylint[spelling]
+
+  Linter:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/setup-python@v2
+    - run: pip install pylint && pip install pylint[spelling]
+    
     - name: Codelint with pylint and black
       run: pylint ./
