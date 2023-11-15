@@ -96,7 +96,6 @@ jobs:
           image-ref: 'docker.io/vodoprovod4ika/devops-programme:${{ github.sha }}'
           format: 'table'
           exit-code: '1'
-          #Just to check if the ci will push the image in the docker hub
           ignore-unfixed: false
           vuln-type: 'os,library'
           severity: 'CRITICAL'
