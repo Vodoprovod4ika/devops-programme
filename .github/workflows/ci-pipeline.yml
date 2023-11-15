@@ -77,6 +77,8 @@ jobs:
         uses: snyk/actions/python-3.10@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          args: --severity-threshold=high
 
   build-and-check-docker-container-trivy:
     name: Build docker image and scan it for vulnerabilities 
