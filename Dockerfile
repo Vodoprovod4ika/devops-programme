@@ -1,4 +1,9 @@
-FROM python:3.12-slim-bullseye 
+FROM ubuntu:20.04
+RUN apt-get update
+RUN apt-get install software-properties-common --yes
+RUN apt-get install build-essential wget -y
+RUN apt-get install python3-pip -y
+RUN pip install --upgrade pip
 
 RUN apt update
 
