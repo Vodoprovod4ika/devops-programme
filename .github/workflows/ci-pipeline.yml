@@ -79,7 +79,7 @@ jobs:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
   build-and-check-docker-container-trivy:
-    name: Build
+    name: Build docker image and scan it for vulnerabilities 
     runs-on: ubuntu-20.04
     needs: [Python-unit-tests, gitleaks-check, snyk-security-ckeck]
     steps:
