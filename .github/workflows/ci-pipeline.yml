@@ -1,4 +1,4 @@
-name: Action for features branches
+name: CI pipeline excluding main branch
 on: 
   push:
     branches: 
@@ -77,3 +77,23 @@ jobs:
         uses: snyk/actions/python-3.10@master
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+
+  build-and-check-docker-container-trivy:
+    name: Build
+    runs-on: ubuntu-20.04
+    needs: [Python-unit-tests, gitleaks-check, snyk-security-ckeck]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Build an image from Dockerfile
+        run: |
+          docker build -t docker.io/vodoprovod4ika/devops-programme:${{ github.sha }} .
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'docker.io/vodoprovod4ika/devops-programme:${{ github.sha }}'
+          format: 'table'
+          exit-code: '1'
+          ignore-unfixed: false
+          vuln-type: 'os,library'
+          severity: 'CRITICAL,HIGH'
